@@ -23,11 +23,8 @@ const FixedLink = styled(StyledLink)`
   right: 50px;
 `;
 export default function Home() {
-  const { data, isLoading } = useSWR("/api/places");
-  if (isLoading) {
-    return <div>loading...</div>;
-  }
-  console.log(data);
+  const { data } = useSWR("/api/places", { fallbackData: [] });
+  console.log("data in index frontend", data);
 
   return (
     <>
