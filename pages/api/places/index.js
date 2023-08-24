@@ -1,5 +1,13 @@
-import { places } from '../../../lib/db';
+import Places from "../../../db/models/Places";
 
-export default function handler(request, response) {
-  return response.status(200).json(places);
+export default async function handler(request, response) {
+  if (request.method === "GET") {
+    try {
+      const places = await Places.find();
+      return response.status(200).json(places);
+    } catch (error) {
+      console.error("error:", error);
+      return response.status(400).json({ error: error.message });
+    }
+  }
 }
