@@ -2,6 +2,7 @@ import Places from "../../../../db/models/Places";
 
 export default async function handler(request, response) {
   const { id } = request.query;
+  await dbConnect();
 
   if (!id) {
     return;
