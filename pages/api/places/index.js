@@ -10,4 +10,15 @@ export default async function handler(request, response) {
       return response.status(400).json({ error: error.message });
     }
   }
+  if (request.method === "POST") {
+    try {
+      const placeData = request.body;
+      const place = new Places(placeData);
+      await place.save();
+      return response.status(201).json({ status: "Place created." });
+    } catch (error) {
+      console.error(error);
+      return response.status(400).json({ error: error.message });
+    }
+  }
 }
