@@ -1,6 +1,7 @@
 import Places from "../../../../db/models/Places";
-
+import dbConnect from "../../../../db/connect";
 export default async function handler(request, response) {
+  await dbConnect();
   const { id } = request.query;
 
   if (!id) {
