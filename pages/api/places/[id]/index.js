@@ -4,6 +4,7 @@ import dbConnect from "../../../../db/connect";
 export default async function handler(request, response) {
   await dbConnect();
   const { id } = request.query;
+  await dbConnect();
 
   if (!id) {
     return;
