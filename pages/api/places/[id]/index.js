@@ -1,5 +1,6 @@
 import Places from "../../../../db/models/Places";
 import dbConnect from "../../../../db/connect";
+
 export default async function handler(request, response) {
   await dbConnect();
   const { id } = request.query;
@@ -9,12 +10,9 @@ export default async function handler(request, response) {
   }
 
   if (request.method === "GET") {
-    try {
-      const place = await Places.findById(id);
-      return response.status(200).json(place);
-    } catch (error) {
-      console.error("error:", error);
-      return response.status(400).json({ error: error.message });
-    }
+    const places = await Places.findById(id);
+    return response.status(200).json(places);
+  } else {
+    return response.status(405).json({ message: "Method not allowed" });
   }
 }
