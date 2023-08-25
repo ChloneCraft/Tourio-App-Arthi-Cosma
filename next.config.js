@@ -25,6 +25,11 @@ const nextConfig = {
         hostname: "upload.wikimedia.org",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "1.bp.blogspot.com",
+        port: "",
+      },
     ],
   },
 };
